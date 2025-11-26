@@ -1,5 +1,3 @@
-"use client"
-
 import { forwardRef, useImperativeHandle } from "react"
 
 export const AudioFeedback = forwardRef(function AudioFeedback(_, ref) {

@@ -1,5 +1,13 @@
 
 import React, { useState, useRef, useEffect } from 'react';
+import { AudioFeedback } from "@/components/audio-feedback"
+import { GameHeader } from "@/components/game-header"
+import { GameInstructions } from './game-instructions';
+import { GameTimer } from './game-timer';
+import { HintsPanel } from './hints-panel';
+import { GameStats } from './game-stats';
+import { GameBoard } from './game-board';
+
 
 interface Flower {
   id: number;
@@ -214,26 +222,26 @@ const MemoryGame: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-4 py-8 from-background to-secondary">
-      {/* <AudioFeedback ref={audioFeedbackRef} /> */}
+      <AudioFeedback ref={audioFeedbackRef} />
       <div className="w-full max-w-2xl">
         {!difficulty ? (
           <DifficultySelector />
         ) : (
           <>
-            {/* <GameHeader onReset={handleReset} /> */}
-            {/* {showInstructions && <GameInstructions onClose={() => setShowInstructions(false)} />} */}
+            <GameHeader onReset={handleReset} />
+            {showInstructions && <GameInstructions onClose={() => setShowInstructions(false)} />}
             <div className="px-4 mb-8">
-              {/* <GameTimer isActive={!showInstructions && !gameWon} onTimeElapsed={setElapsedTime} /> */}
+              <GameTimer isActive={!showInstructions && !gameWon} onTimeElapsed={setElapsedTime} />
             </div>
-            {/* <HintsPanel
-                hintsUsed={hintsUsed}
-                narrationEnabled={narrationEnabled}
-                onToggleNarration={() => setNarrationEnabled(!narrationEnabled)}
-                onGetHint={handleGetHint}
-              /> */}
-            {/* <GameStats matches={matches} moves={moves} totalCards={cards.length} /> */}
-            {/* <GameBoard cards={cards} flippedCards={flippedCards} flowers={flowers} onCardFlip={handleCardFlip} /> */}
-            {/* {gameWon && <WinScreen moves={moves} time={elapsedTime} hints={hintsUsed} onPlayAgain={handleReset} />} */}
+            <HintsPanel
+              hintsUsed={hintsUsed}
+              narrationEnabled={narrationEnabled}
+              onToggleNarration={() => setNarrationEnabled(!narrationEnabled)}
+              onGetHint={handleGetHint}
+            />
+            <GameStats matches={matches} moves={moves} totalCards={cards.length} />
+            <GameBoard cards={cards} flippedCards={flippedCards} flowers={flowers} onCardFlip={handleCardFlip} />
+            {gameWon && <WinScreen moves={moves} time={elapsedTime} hints={hintsUsed} onPlayAgain={handleReset} />}
           </>
         )}
       </div>
