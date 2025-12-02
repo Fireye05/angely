@@ -12,7 +12,7 @@ import { GameBoard } from './game-board';
 interface Flower {
   id: number;
   name: string;
-  emoji: string;
+  path: string;
 }
 
 interface GameCard {
@@ -22,14 +22,12 @@ interface GameCard {
 }
 
 const flowers: Flower[] = [
-  { id: 1, name: "Rosa", emoji: "🌹" },
-  { id: 2, name: "Girasol", emoji: "🌻" },
-  { id: 3, name: "Tulipán", emoji: "🌷" },
-  { id: 4, name: "Flor de Loto", emoji: "🪷" },
-  { id: 5, name: "Margarita", emoji: "🼼" },
-  { id: 6, name: "Lirio", emoji: "⚜️" },
-  { id: 7, name: "Flor de Cerezo", emoji: "🌸" },
-  { id: 8, name: "Hibisco", emoji: "🌺" },
+  { id: 1, name: "Rosa", path: "src/assets/flores/rosa.png" },
+  { id: 2, name: "Campanillas", path: "src/assets/flores/campanillas.png" },
+  { id: 3, name: "Tulipán", path: "src/assets/flores/tulipan.png" },
+  { id: 4, name: "Lírio", path: "src/assets/flores/lirio.png" },
+  { id: 5, name: "Suculenta", path: "src/assets/flores/suculenta.png" },
+  { id: 6, name: "Margarita", path: "src/assets/flores/margarita.png" },
 ]
 
 
