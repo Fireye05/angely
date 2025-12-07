@@ -141,38 +141,30 @@ const MemoryGame: React.FC = () => {
   }
 
 
-  function WinScreen({
-    moves,
-    time,
-    hints,
-    onPlayAgain,
-  }: { moves: number; time: number; hints: number; onPlayAgain: () => void }) {
+  function WinScreen({ moves, time, hints, onPlayAgain }: { moves: number; time: number; hints: number; onPlayAgain: () => void }) {
     const formatTime = (totalSeconds: number) => {
       const minutes = Math.floor(totalSeconds / 60)
       const secs = totalSeconds % 60
       return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
     }
-
-
-
     return (
-      <div className="fixed inset-0 bg-black/40 flex items-center justify-center p-4">
-        <div className="bg-card rounded-2xl p-8 text-center max-w-md shadow-2xl border-4 border-success animate-fade-in-up">
-          <h2 className="text-4xl font-bold text-success mb-4 animate-pulse-success">¡Ganaste!</h2>
+      <div className="fixed inset-0 flex items-center justify-center p-4" style={{ backgroundColor: 'rgba(30,42,56,0.95)' }}>
+        <div className="rounded-2xl p-8 text-center max-w-md shadow-2xl border-4 animate-fade-in-up" style={{ backgroundColor: '#1E2A38', borderColor: '#4BB5F2' }}>
+          <h2 className="text-4xl font-bold mb-4 animate-pulse-success text-white">¡Ganaste!</h2>
           <div className="space-y-4 mb-8">
-            <p className="text-2xl text-foreground">
-              Completaste el juego en <span className="font-bold text-accent">{moves}</span> movimientos
+            <p className="text-2xl text-white">
+              Completaste el juego en <span className="font-bold text-[#4BB5F2]">{moves}</span> movimientos
             </p>
-            <p className="text-2xl text-foreground">
-              Tiempo total: <span className="font-bold text-warning font-mono">{formatTime(time)}</span>
+            <p className="text-2xl text-white">
+              Tiempo total: <span className="font-bold text-[#4BEAF2] font-mono">{formatTime(time)}</span>
             </p>
-            <p className="text-2xl text-foreground">
-              Pistas utilizadas: <span className="font-bold text-primary">{hints}</span>
+            <p className="text-2xl text-white">
+              Pistas utilizadas: <span className="font-bold text-[#824BF2]">{hints}</span>
             </p>
           </div>
           <button
             onClick={onPlayAgain}
-            className="px-8 py-4 text-xl font-bold bg-success text-success-foreground rounded-lg hover:bg-success/90 transition-colors focus:outline-none focus:ring-4 focus:ring-success/50 w-full"
+            className="px-8 py-4 text-xl font-bold rounded-lg transition-colors focus:outline-none focus:ring-4 w-full bg-[#4BB5F2] text-[#1E2A38] hover:bg-[#4BEAF2]"
           >
             Jugar de Nuevo
           </button>
@@ -184,31 +176,31 @@ const MemoryGame: React.FC = () => {
 
   function DifficultySelector() {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen gap-12 px-4">
+      <div className="flex flex-col items-center justify-center min-h-screen gap-12 px-4 bg-[#1E2A38]">
         <div className="text-center">
-          <h1 className="text-5xl font-bold text-primary mb-4">Memorama Flores</h1>
-          <p className="text-2xl text-foreground/80 mb-6">Elige tu nivel de dificultad</p>
-          <p className="text-xl text-foreground/70">Empareja todas las flores para ganar</p>
+          <h1 className="text-5xl font-bold mb-4 text-white">Memorama Flores</h1>
+          <p className="text-2xl mb-6 text-white">Elige tu nivel de dificultad</p>
+          <p className="text-xl text-white opacity-80">Empareja todas las flores para ganar</p>
         </div>
 
         <div className="flex flex-col gap-6 w-full max-w-md">
           <button
-            onClick={() => setDifficulty("easy")}
-            className="px-8 py-6 text-2xl font-bold bg-primary text-primary-foreground rounded-xl hover:bg-primary/90 transition-colors focus:outline-none focus:ring-4 focus:ring-primary/50"
+            onClick={() => setDifficulty('easy')}
+            className="px-8 py-6 text-2xl font-bold rounded-xl transition-colors focus:outline-none focus:ring-4 w-full bg-[#4BB5F2] text-[#1E2A38] hover:bg-[#4BB5F2]/70"
             aria-label="Nivel Fácil - 4 cartas"
           >
             Fácil (4 cartas)
           </button>
           <button
-            onClick={() => setDifficulty("medium")}
-            className="px-8 py-6 text-2xl font-bold bg-accent text-accent-foreground rounded-xl hover:bg-accent/90 transition-colors focus:outline-none focus:ring-4 focus:ring-accent/50"
+            onClick={() => setDifficulty('medium')}
+            className="px-8 py-6 text-2xl font-bold rounded-xl transition-colors focus:outline-none focus:ring-4 w-full bg-[#4B80F2] text-white hover:bg-[#4B80F2]/70"
             aria-label="Nivel Medio - 8 cartas"
           >
             Medio (8 cartas)
           </button>
           <button
-            onClick={() => setDifficulty("hard")}
-            className="px-8 py-6 text-2xl font-bold bg-warning text-warning-foreground rounded-xl hover:bg-warning/90 transition-colors focus:outline-none focus:ring-4 focus:ring-warning/50"
+            onClick={() => setDifficulty('hard')}
+            className="px-8 py-6 text-2xl font-bold rounded-xl transition-colors focus:outline-none focus:ring-4 w-full bg-[#824BF2] text-white hover:bg-[#824BF2]/70"
             aria-label="Nivel Difícil - 12 cartas"
           >
             Difícil (12 cartas)
@@ -219,7 +211,7 @@ const MemoryGame: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-4 py-8 from-background to-secondary">
+    <div className="flex flex-col items-center justify-center min-h-screen px-4 py-8 from-background to-secondary bg-[#1E2A38]">
       <AudioFeedback ref={audioFeedbackRef} />
       <div className="w-full max-w-2xl">
         {!difficulty ? (

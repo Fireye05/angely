@@ -47,7 +47,7 @@ export function GameBoard({
                 ? "bg-card text-foreground border-4 border-primary shadow-lg"
                 : "bg-primary text-primary-foreground border-4 border-primary hover:shadow-md hover:scale-105"
               }
-              ${card.isMatched ? "ring-4 ring-success/50 bg-success/20" : ""}
+              ${card.isMatched ? "ring-4 ring-success/50" : ""}
               disabled:cursor-not-allowed
               flex items-center justify-center
             `}
